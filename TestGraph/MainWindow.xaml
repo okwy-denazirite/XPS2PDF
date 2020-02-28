@@ -1,0 +1,89 @@
+﻿<Window x:Class="TestGraph.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:graphsharp="clr-namespace:GraphSharp.Controls;assembly=GraphSharp.Controls"
+
+    xmlns:zoom="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions"
+
+        xmlns:local="clr-namespace:TestGraph"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <Grid.Resources>
+
+            <local:ActiveConverter x:Key="activeConverter"/>
+
+            <DataTemplate DataType="{x:Type local:SampleVertex}">
+
+                <Border  Background="{Binding Path=Active, Converter={StaticResource activeConverter}, NotifyOnTargetUpdated=True}"
+
+					BorderBrush="LightGray" 
+
+					BorderThickness="1,1,1,1"
+
+					CornerRadius="10,10,10,10"
+
+					Padding="10,10,10,10"
+
+					HorizontalAlignment="Center"
+
+					VerticalAlignment="Center"
+
+					Cursor="Hand">
+
+                    <Border.ContextMenu>
+
+                        <ContextMenu>
+
+                            <MenuItem x:Name="Change" Click="MenuItem_Click" Tag="{Binding}">
+
+                                <MenuItem.Header>
+
+                                    <TextBlock HorizontalAlignment="Left">Change</TextBlock>
+
+                                </MenuItem.Header>
+
+                            </MenuItem>
+
+                        </ContextMenu>
+
+                    </Border.ContextMenu>
+
+                    <Border.ToolTip>
+
+                        <ToolTip>
+
+                            <TextBlock Text="{Binding Text}" />
+
+                        </ToolTip>
+
+                    </Border.ToolTip>
+
+                    <TextBlock Text="{Binding Text}" TextAlignment="Center" TextWrapping="Wrap" />
+
+                </Border>
+
+            </DataTemplate>
+
+        </Grid.Resources>
+
+
+
+        <zoom:ZoomControl Name="zoomControl">
+
+            <graphsharp:GraphLayout x:Name="graphLayout"
+
+                                    Graph="{Binding Path=Graph}"
+
+                                    LayoutAlgorithmType="{Binding Path=LayoutAlgorithm}"
+
+                                    OverlapRemovalAlgorithmType="FSA" />
+
+        </zoom:ZoomControl>
+
+    </Grid>
+
+</Window>

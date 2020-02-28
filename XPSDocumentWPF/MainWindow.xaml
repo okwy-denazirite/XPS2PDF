@@ -1,0 +1,22 @@
+﻿<Window x:Class="XPSDocumentWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XPSDocumentWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Click="Button_Click"/>
+        <!--<FixedDocument xmlns="http://schemas.microsoft.com/xps/2005/06">
+            <PageContent Source="Pages/1.fpage" />
+            <PageContent Source="Pages/2.fpage" />
+        </FixedDocument>-->
+        <!--<Glyphs OriginX="100" OriginY="252.49" FontRenderingEmSize="50"
+        FontUri="/Resources/53698881-83d0-479f-a8a4-5e5a58691f15.ODTTF"
+        UnicodeString="Hello, world!" Fill="#FF000000" />-->
+        <DocumentViewer Name="DocViewer" Document="{Binding }">
+            
+        </DocumentViewer>
+    </Grid>
+</Window>
